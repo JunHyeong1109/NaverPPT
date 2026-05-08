@@ -97,17 +97,16 @@
 
     /* ── 레이블 & 제목 ── */
     .section-label {
-      font-size: 10.5px; font-weight: 700; color: var(--green);
-      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px;
+      font-size: 12px; font-weight: 700; color: var(--green);
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;
     }
     .section-title {
-      font-size: 30px; font-weight: 900; color: var(--dark);
-      line-height: 1.2; margin-bottom: 24px;
+      font-size: 36px; font-weight: 900; color: var(--dark);
+      line-height: 1.2; margin-bottom: 26px;
     }
     .section-title span { color: var(--green); }
 
     /* ── 타이틀 슬라이드 ── */
-    #s1 { background: var(--dark); }
     #s1 .card-body { padding: 52px 72px; }
     .naver-badge {
       display: inline-block;
@@ -116,7 +115,7 @@
       color: var(--green); font-size: 12px; font-weight: 900;
       letter-spacing: 2px; padding: 5px 16px; border-radius: 5px; margin-bottom: 28px;
     }
-    .title-main { font-size: 48px; font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 12px; }
+    .title-main { font-size: 48px; font-weight: 900; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
     .title-sub  { font-size: 16px; color: #888; font-weight: 300; margin-bottom: 32px; }
     .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .tag {
@@ -131,9 +130,9 @@
       flex: 1; background: var(--gray-light); border-radius: 10px;
       padding: 18px 10px; text-align: center;
     }
-    .step-icon { font-size: 24px; margin-bottom: 6px; }
-    .step-title { font-size: 12.5px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
-    .step-desc { font-size: 10.5px; color: var(--gray); line-height: 1.45; }
+    .step-icon { font-size: 28px; margin-bottom: 8px; }
+    .step-title { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .step-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
     .step.hl { background: var(--green); }
     .step.hl .step-title, .step.hl .step-desc { color: var(--white); }
     .proc-arrow { display: flex; align-items: center; font-size: 16px; color: var(--green); padding: 0 5px; flex-shrink: 0; }
@@ -142,7 +141,7 @@
     .hl-box {
       background: var(--green-light); border: 1.5px solid var(--green-mid);
       border-radius: 10px; padding: 14px 22px; text-align: center; margin-top: 18px;
-      font-size: 13.5px; color: var(--green-dark); font-weight: 500; line-height: 1.65;
+      font-size: 15px; color: var(--green-dark); font-weight: 500; line-height: 1.7;
     }
     .hl-box strong { color: var(--green); font-weight: 700; }
 
@@ -156,24 +155,24 @@
       background: var(--gray-light); border-radius: 10px;
       padding: 18px 20px; border-left: 4px solid var(--green);
     }
-    .ic-num   { font-size: 22px; font-weight: 900; color: var(--green-mid); line-height: 1; margin-bottom: 3px; }
-    .ic-title { font-size: 13.5px; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
-    .ic-desc  { font-size: 12px; color: var(--gray); line-height: 1.6; }
+    .ic-num   { font-size: 26px; font-weight: 900; color: var(--green-mid); line-height: 1; margin-bottom: 4px; }
+    .ic-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .ic-desc  { font-size: 13.5px; color: var(--gray); line-height: 1.65; }
 
     /* ── 2컬럼 ── */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .col-head {
-      font-size: 12.5px; font-weight: 700; color: var(--green-dark);
-      margin-bottom: 12px; padding-bottom: 7px; border-bottom: 2px solid var(--green-mid);
+      font-size: 14px; font-weight: 700; color: var(--green-dark);
+      margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--green-mid);
     }
 
     /* ── 체크 리스트 ── */
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--dark); line-height: 1.5; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--dark); line-height: 1.55; }
     .check-list li .dot {
-      width: 20px; height: 20px; background: var(--green); border-radius: 50%;
+      width: 22px; height: 22px; background: var(--green); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; color: #fff; font-size: 10px; font-weight: 700; margin-top: 2px;
+      flex-shrink: 0; color: #fff; font-size: 11px; font-weight: 700; margin-top: 2px;
     }
     .check-list li strong { color: var(--green-dark); }
 
@@ -184,33 +183,31 @@
     .star-box.t { border-color: #00a8e8; }
     .star-box.a { border-color: #ff6b35; }
     .star-box.r { border-color: #9b59b6; }
-    .star-letter { font-size: 30px; font-weight: 900; line-height: 1; margin-bottom: 3px; }
+    .star-letter { font-size: 36px; font-weight: 900; line-height: 1; margin-bottom: 4px; }
     .star-box.s .star-letter { color: #03C75A; }
     .star-box.t .star-letter { color: #00a8e8; }
     .star-box.a .star-letter { color: #ff6b35; }
     .star-box.r .star-letter { color: #9b59b6; }
-    .star-word { font-size: 12.5px; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
-    .star-desc { font-size: 12px; color: var(--gray); line-height: 1.6; }
+    .star-word { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .star-desc { font-size: 13.5px; color: var(--gray); line-height: 1.65; }
 
     /* ── Q박스 ── */
     .q-box {
       background: var(--gray-light); border-radius: 10px;
-      padding: 14px 18px; font-size: 13px; color: var(--dark);
-      line-height: 1.5; border-left: 3px solid var(--green);
+      padding: 16px 20px; font-size: 14.5px; color: var(--dark);
+      line-height: 1.55; border-left: 3px solid var(--green);
     }
-    .q-label { font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 1px; margin-bottom: 4px; }
+    .q-label { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 1px; margin-bottom: 5px; }
 
     /* ── 마무리 ── */
-    #s10 { background: var(--dark); }
     #s10 .card-body { align-items: center; justify-content: center; text-align: center; }
-    .end-icon  { font-size: 48px; margin-bottom: 18px; }
-    .end-title { font-size: 32px; font-weight: 900; color: var(--white); margin-bottom: 10px; }
-    .end-sub   { font-size: 16px; color: #888; font-weight: 300; margin-bottom: 26px; }
+    .end-title { font-size: 40px; font-weight: 900; color: var(--dark); margin-bottom: 12px; }
+    .end-sub   { font-size: 18px; color: #888; font-weight: 300; margin-bottom: 30px; }
     .end-hl {
       display: inline-block;
       background: rgba(3,199,90,0.12); border: 1px solid rgba(3,199,90,0.35);
-      border-radius: 10px; padding: 20px 44px;
-      font-size: 15px; color: var(--green); font-weight: 500; line-height: 1.75;
+      border-radius: 10px; padding: 24px 52px;
+      font-size: 17px; color: var(--green); font-weight: 500; line-height: 1.8;
     }
     .end-hl strong { font-weight: 700; }
   </style>
@@ -459,7 +456,6 @@
   <div class="section-card" id="s10">
     <div class="card-accent"></div>
     <div class="card-body">
-      <div class="end-icon">🎯</div>
       <div class="end-title">핵심 한 줄 요약</div>
       <div class="end-sub">네이버 면접은 <strong style="color:var(--green)">경험의 깊이</strong>를 봅니다</div>
       <div class="end-hl">
