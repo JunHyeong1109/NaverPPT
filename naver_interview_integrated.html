@@ -192,6 +192,20 @@
       background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-mid);
     }
 
+    /* ── 준비 포인트 칩 ── */
+    .prep-row {
+      display: flex; gap: 8px; margin-top: 12px; flex-wrap: nowrap;
+    }
+    .prep-item {
+      flex: 1; background: var(--green-light); border: 1px solid var(--green-mid);
+      color: var(--green-dark); font-size: 12px; font-weight: 600;
+      padding: 6px 10px; border-radius: 6px; text-align: center; line-height: 1.4;
+    }
+    .prep-label {
+      font-size: 10px; font-weight: 700; color: var(--green);
+      letter-spacing: 1px; margin-bottom: 6px; margin-top: 14px;
+    }
+
     .slide-src {
       padding: 8px 60px;
       font-size: 10.5px; color: #bbb;
@@ -345,6 +359,17 @@
           <div class="qa-q"><span class="q-badge">주안점</span>코드 품질·협업 방식</div>
           <div class="qa-a"><div class="focus-label">NAVER가 보는 것</div>코드 리뷰 참여도, 테스트 작성 습관, <strong style="color:#1a1a1a">기술 부채를 어떻게 관리했는지</strong> 확인합니다.</div>
         </div>
+        <div class="qa-block">
+          <div class="qa-q"><span class="q-badge">주안점</span>최신 기술 트렌드</div>
+          <div class="qa-a"><div class="focus-label">NAVER가 보는 것</div>트렌드를 단순히 알고 있는지가 아니라 <strong style="color:#1a1a1a">실제 프로젝트에 어떻게 적용했는지</strong>, 혹은 적용하지 않은 이유까지 설명할 수 있는지 봅니다.</div>
+        </div>
+      </div>
+      <div class="prep-label">CHECKLIST — 준비 포인트</div>
+      <div class="prep-row">
+        <div class="prep-item">기술 스택 선택 이유 정리</div>
+        <div class="prep-item">문제 → 원인 분석 → 해결 흐름 스토리라인</div>
+        <div class="prep-item">결과는 수치·지표로 표현</div>
+        <div class="prep-item">d2.naver.com 정기 구독 권장</div>
       </div>
     </div>
     <div class="slide-src">잡코리아 네이버 개발직군 면접 후기 / 블라인드 네이버 채용 게시판 — 실무진 면접 패턴 분석</div>
