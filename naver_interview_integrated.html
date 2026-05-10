@@ -28,7 +28,6 @@
       background: #0e0e0e;
     }
 
-    /* ── 상단 고정 바 ── */
     #topbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -41,7 +40,7 @@
       flex-direction: column;
     }
     .progress-bar { height: 3px; background: rgba(255,255,255,0.08); flex-shrink: 0; }
-    .progress-fill { height: 100%; background: var(--green); transition: width .25s ease; width: 9.1%; }
+    .progress-fill { height: 100%; background: var(--green); transition: width .25s ease; width: 10%; }
     .topbar-inner {
       flex: 1; max-width: 1100px; margin: 0 auto; width: 100%;
       padding: 0 24px; display: flex; align-items: center; gap: 12px;
@@ -57,7 +56,6 @@
     .toc-btn:hover, .toc-btn.active { background: rgba(3,199,90,0.15); color: var(--green); }
     .slide-counter { margin-left: auto; flex-shrink: 0; font-size: 11px; color: #555; }
 
-    /* ── 스크롤 스냅 컨테이너 ── */
     #main {
       position: fixed;
       top: var(--bar); left: 0; right: 0; bottom: 0;
@@ -65,7 +63,6 @@
       scroll-snap-type: y mandatory;
     }
 
-    /* ── 섹션 카드 (한 화면) ── */
     .section-card {
       height: calc(100vh - var(--bar));
       scroll-snap-align: start;
@@ -83,7 +80,6 @@
       min-height: 0;
     }
 
-    /* ── 공통 텍스트 ── */
     .section-label {
       font-size: 11px; font-weight: 700; color: var(--green);
       letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px;
@@ -94,7 +90,6 @@
     }
     .section-title span { color: var(--green); }
 
-    /* ── 출처 태그 ── */
     .source-tag {
       display: inline-flex; align-items: center; gap: 5px;
       background: var(--green-light); border: 1px solid var(--green-mid);
@@ -102,7 +97,6 @@
       padding: 3px 10px; border-radius: 4px; margin-bottom: 18px;
     }
 
-    /* ── 타이틀 슬라이드 ── */
     #s1 .card-body { padding: 52px 72px; justify-content: center; }
     .naver-badge {
       display: inline-block;
@@ -119,7 +113,6 @@
       border: 1px solid rgba(3,199,90,0.3);
     }
 
-    /* ── 채용 프로세스 ── */
     .process-row { display: flex; align-items: stretch; }
     .step {
       flex: 1; background: var(--gray-light); border-radius: 10px;
@@ -132,7 +125,6 @@
     .step.hl .step-title, .step.hl .step-desc { color: var(--white); }
     .proc-arrow { display: flex; align-items: center; font-size: 16px; color: var(--green); padding: 0 5px; flex-shrink: 0; }
 
-    /* ── 하이라이트 박스 ── */
     .hl-box {
       background: var(--green-light); border: 1.5px solid var(--green-mid);
       border-radius: 10px; padding: 14px 22px; text-align: center; margin-top: 18px;
@@ -140,12 +132,10 @@
     }
     .hl-box strong { color: var(--green); }
 
-    /* ── 그리드 ── */
     .grid { display: grid; gap: 12px; }
     .grid.g2 { grid-template-columns: 1fr 1fr; }
     .grid.g3 { grid-template-columns: 1fr 1fr 1fr; }
 
-    /* ── 포인트 카드 ── */
     .point-card {
       background: var(--gray-light); border-radius: 10px;
       padding: 20px 22px; border-left: 4px solid var(--green);
@@ -154,7 +144,6 @@
     .point-card .pt-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
     .point-card .pt-desc  { font-size: 13px; color: var(--gray); line-height: 1.65; }
 
-    /* ── 질문 + 주안점 블록 ── */
     .qa-block {
       background: var(--gray-light); border-radius: 12px;
       overflow: hidden; display: flex; flex-direction: column;
@@ -173,10 +162,8 @@
     }
     .qa-a .focus-label { font-size: 10.5px; font-weight: 700; color: var(--green); letter-spacing: 1px; margin-bottom: 4px; }
 
-    /* ── 2컬럼 ── */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-    /* ── 번호 리스트 ── */
     .num-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .num-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--dark); line-height: 1.55; }
     .num-list li .num {
@@ -186,7 +173,6 @@
     }
     .num-list li strong { color: var(--green-dark); }
 
-    /* ── 실제 질문 리스트 ── */
     .real-q-list { display: flex; flex-direction: column; gap: 10px; }
     .real-q {
       background: var(--gray-light); border-radius: 8px;
@@ -200,45 +186,24 @@
       flex-shrink: 0; margin-top: 2px; white-space: nowrap;
     }
 
-    /* ── 단계 배지 ── */
     .step-badge {
       display: inline-block; padding: 4px 14px; border-radius: 20px;
       font-size: 12px; font-weight: 700; margin-bottom: 14px;
       background: var(--green-light); color: var(--green-dark); border: 1px solid var(--green-mid);
     }
 
-    /* ── 평가 기준 바 ── */
-    .eval-row { display: flex; flex-direction: column; gap: 10px; }
-    .eval-item { display: flex; align-items: center; gap: 14px; }
-    .eval-name { font-size: 13.5px; font-weight: 600; color: var(--dark); width: 140px; flex-shrink: 0; }
-    .eval-bar-wrap { flex: 1; background: #e8e8e8; border-radius: 4px; height: 10px; }
-    .eval-bar { height: 100%; border-radius: 4px; background: var(--green); }
-    .eval-pct { font-size: 12px; font-weight: 700; color: var(--green-dark); width: 36px; text-align: right; flex-shrink: 0; }
-
-    /* ── 슬라이드 하단 출처 ── */
     .slide-src {
       padding: 8px 60px;
-      font-size: 10.5px;
-      color: #bbb;
+      font-size: 10.5px; color: #bbb;
       border-top: 1px solid #f0f0f0;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      flex-shrink: 0; display: flex; align-items: center; gap: 6px;
     }
     .slide-src::before {
-      content: '출처';
-      background: #ebebeb;
-      color: #999;
-      font-size: 9.5px;
-      font-weight: 700;
-      padding: 1px 6px;
-      border-radius: 3px;
-      flex-shrink: 0;
+      content: '출처'; background: #ebebeb; color: #999;
+      font-size: 9.5px; font-weight: 700; padding: 1px 6px; border-radius: 3px; flex-shrink: 0;
     }
 
-    /* ── 마무리 ── */
-    #s11 .card-body { align-items: center; justify-content: center; text-align: center; }
+    #s10 .card-body { align-items: center; justify-content: center; text-align: center; }
     .end-title { font-size: 38px; font-weight: 900; color: var(--dark); margin-bottom: 12px; }
     .end-sub   { font-size: 17px; color: #888; font-weight: 300; margin-bottom: 28px; }
     .end-hl {
@@ -260,16 +225,15 @@
       <button class="toc-btn active" onclick="goto('s1')">인트로</button>
       <button class="toc-btn" onclick="goto('s2')">프로세스</button>
       <button class="toc-btn" onclick="goto('s3')">면접 특징</button>
-      <button class="toc-btn" onclick="goto('s4')">평가 비중</button>
-      <button class="toc-btn" onclick="goto('s5')">1차:직무역량</button>
-      <button class="toc-btn" onclick="goto('s6')">1차:실제질문</button>
-      <button class="toc-btn" onclick="goto('s7')">2차:인성·문화</button>
-      <button class="toc-btn" onclick="goto('s8')">2차:실제질문</button>
-      <button class="toc-btn" onclick="goto('s9')">서비스 이해</button>
-      <button class="toc-btn" onclick="goto('s10')">답변 전략</button>
-      <button class="toc-btn" onclick="goto('s11')">마무리</button>
+      <button class="toc-btn" onclick="goto('s4')">1차:직무역량</button>
+      <button class="toc-btn" onclick="goto('s5')">1차:실제질문</button>
+      <button class="toc-btn" onclick="goto('s6')">2차:인성·문화</button>
+      <button class="toc-btn" onclick="goto('s7')">2차:실제질문</button>
+      <button class="toc-btn" onclick="goto('s8')">서비스 이해</button>
+      <button class="toc-btn" onclick="goto('s9')">답변 전략</button>
+      <button class="toc-btn" onclick="goto('s10')">마무리</button>
     </nav>
-    <div class="slide-counter" id="counter">1 / 11</div>
+    <div class="slide-counter" id="counter">1 / 10</div>
   </div>
 </div>
 
@@ -291,7 +255,7 @@
     </div>
   </div>
 
-  <!-- 2. 채용 프로세스 (v1) -->
+  <!-- 2. 채용 프로세스 -->
   <div class="section-card" id="s2">
     <div class="card-accent"></div>
     <div class="card-body">
@@ -357,43 +321,8 @@
     <div class="slide-src">잡코리아·블라인드 네이버 면접 후기 종합 분석 (2022~2024) — 면접관 성향·질문 패턴 기반 정리</div>
   </div>
 
-  <!-- 4. 평가 비중 -->
+  <!-- 4. 1차: 직무역량 주안점 -->
   <div class="section-card" id="s4">
-    <div class="card-accent"></div>
-    <div class="card-body">
-      <div class="section-label">Evaluation Weight</div>
-      <div class="section-title">단계별 <span>평가 비중</span></div>
-      <div class="two-col">
-        <div>
-          <div class="step-badge">1차 면접 — 실무진</div>
-          <div class="eval-row">
-            <div class="eval-item"><div class="eval-name">직무 전문성</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:85%"></div></div><div class="eval-pct">85%</div></div>
-            <div class="eval-item"><div class="eval-name">문제 해결력</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:80%"></div></div><div class="eval-pct">80%</div></div>
-            <div class="eval-item"><div class="eval-name">서비스 이해도</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:65%"></div></div><div class="eval-pct">65%</div></div>
-            <div class="eval-item"><div class="eval-name">협업 경험</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:50%"></div></div><div class="eval-pct">50%</div></div>
-            <div class="eval-item"><div class="eval-name">인성·가치관</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:30%"></div></div><div class="eval-pct">30%</div></div>
-          </div>
-        </div>
-        <div>
-          <div class="step-badge">2차 면접 — 임원·HR</div>
-          <div class="eval-row">
-            <div class="eval-item"><div class="eval-name">인성·가치관</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:80%; background:#00a8e8"></div></div><div class="eval-pct" style="color:#0077aa">80%</div></div>
-            <div class="eval-item"><div class="eval-name">조직문화 적합도</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:75%; background:#00a8e8"></div></div><div class="eval-pct" style="color:#0077aa">75%</div></div>
-            <div class="eval-item"><div class="eval-name">성장 가능성</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:70%; background:#00a8e8"></div></div><div class="eval-pct" style="color:#0077aa">70%</div></div>
-            <div class="eval-item"><div class="eval-name">지원 동기</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:65%; background:#00a8e8"></div></div><div class="eval-pct" style="color:#0077aa">65%</div></div>
-            <div class="eval-item"><div class="eval-name">직무 전문성</div><div class="eval-bar-wrap"><div class="eval-bar" style="width:40%; background:#00a8e8"></div></div><div class="eval-pct" style="color:#0077aa">40%</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="hl-box" style="margin-top:20px">
-        수치는 면접 후기 분석 기반 <strong>상대적 비중</strong>입니다. 1차는 <strong>실력</strong>, 2차는 <strong>사람</strong>을 봅니다.
-      </div>
-    </div>
-    <div class="slide-src">잡코리아 네이버 면접 후기 분석 기반 추정치 — 공식 배점 기준이 아닌 응시자 후기에서 도출한 상대적 비중</div>
-  </div>
-
-  <!-- 5. 1차: 직무역량 주안점 -->
-  <div class="section-card" id="s5">
     <div class="card-accent"></div>
     <div class="card-body">
       <div class="section-label">1st Interview</div>
@@ -421,8 +350,8 @@
     <div class="slide-src">잡코리아 네이버 개발직군 면접 후기 / 블라인드 네이버 채용 게시판 — 실무진 면접 패턴 분석</div>
   </div>
 
-  <!-- 6. 1차: 실제 질문 -->
-  <div class="section-card" id="s6">
+  <!-- 5. 1차: 실제 질문 -->
+  <div class="section-card" id="s5">
     <div class="card-accent"></div>
     <div class="card-body">
       <div class="section-label">Real Questions — 1st Interview</div>
@@ -446,8 +375,8 @@
     <div class="slide-src">잡코리아 네이버 면접 후기 (jobkorea.co.kr) / 블라인드 네이버 면접 게시판 (teamblind.com) — 직접 인용</div>
   </div>
 
-  <!-- 7. 2차: 인성·문화 주안점 -->
-  <div class="section-card" id="s7">
+  <!-- 6. 2차: 인성·문화 주안점 -->
+  <div class="section-card" id="s6">
     <div class="card-accent"></div>
     <div class="card-body">
       <div class="section-label">2nd Interview</div>
@@ -475,8 +404,8 @@
     <div class="slide-src">잡코리아·블라인드 네이버 임원·HR 면접 후기 종합 — 인성 면접 빈출 패턴 분석</div>
   </div>
 
-  <!-- 8. 2차: 실제 질문 -->
-  <div class="section-card" id="s8">
+  <!-- 7. 2차: 실제 질문 -->
+  <div class="section-card" id="s7">
     <div class="card-accent"></div>
     <div class="card-body">
       <div class="section-label">Real Questions — 2nd Interview</div>
@@ -500,8 +429,8 @@
     <div class="slide-src">잡코리아 네이버 면접 후기 / 블라인드 네이버 채용 게시판 — 임원·HR 면접 직접 인용</div>
   </div>
 
-  <!-- 9. 서비스 이해도 -->
-  <div class="section-card" id="s9">
+  <!-- 8. 서비스 이해도 -->
+  <div class="section-card" id="s8">
     <div class="card-accent"></div>
     <div class="card-body">
       <div class="section-label">Service Understanding</div>
@@ -531,8 +460,8 @@
     <div class="slide-src">잡코리아 네이버 면접 후기 빈출 질문 분석 / 네이버 공식 채용 페이지 (recruit.navercorp.com)</div>
   </div>
 
-  <!-- 10. 답변 전략 -->
-  <div class="section-card" id="s10">
+  <!-- 9. 답변 전략 -->
+  <div class="section-card" id="s9">
     <div class="card-accent"></div>
     <div class="card-body">
       <div class="section-label">Answer Strategy</div>
@@ -562,8 +491,8 @@
     <div class="slide-src">잡코리아 네이버 합격자 후기 / 네이버 공식 채용 가이드 / 블라인드 네이버 면접 준비 게시판</div>
   </div>
 
-  <!-- 11. 마무리 -->
-  <div class="section-card" id="s11">
+  <!-- 10. 마무리 -->
+  <div class="section-card" id="s10">
     <div class="card-accent"></div>
     <div class="card-body">
       <div class="end-title">네이버 면접 핵심 요약</div>
@@ -580,7 +509,7 @@
 </div>
 
 <script>
-  const sections = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11'];
+  const sections = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10'];
   const btns = document.querySelectorAll('.toc-btn');
   const main = document.getElementById('main');
 
