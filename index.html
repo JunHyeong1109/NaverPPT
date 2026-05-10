@@ -35,9 +35,9 @@
 
     .cards {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       width: 100%;
-      max-width: 820px;
+      max-width: 1100px;
     }
 
     .card {
@@ -52,11 +52,30 @@
       display: flex;
       flex-direction: column;
       gap: 0;
+      position: relative;
     }
     .card:hover {
       border-color: #03C75A;
       transform: translateY(-4px);
       box-shadow: 0 12px 40px rgba(3,199,90,0.15);
+    }
+
+    /* 통합본 카드 강조 */
+    .card.featured {
+      border-color: rgba(3,199,90,0.3);
+      background: linear-gradient(145deg, #1a1a1a 0%, #162018 100%);
+    }
+    .card.featured:hover {
+      border-color: #03C75A;
+      box-shadow: 0 12px 48px rgba(3,199,90,0.25);
+    }
+    .featured-badge {
+      position: absolute;
+      top: -13px; left: 50%; transform: translateX(-50%);
+      background: #03C75A; color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+      padding: 3px 14px; border-radius: 20px;
+      white-space: nowrap;
     }
 
     .card-ver {
@@ -95,7 +114,7 @@
     .divider {
       display: flex; align-items: center; justify-content: center;
       color: #333; font-size: 13px; font-weight: 500;
-      flex-shrink: 0; padding: 0 4px;
+      flex-shrink: 0; padding: 0 2px;
     }
   </style>
 </head>
@@ -137,6 +156,24 @@
         <span class="tag">잡코리아·블라인드</span>
       </div>
       <div class="card-btn">버전 2 보기 →</div>
+    </a>
+
+    <div class="divider">+</div>
+
+    <a class="card featured" href="naver_interview_integrated.html">
+      <div class="featured-badge">NEW</div>
+      <div class="card-ver">INTEGRATED</div>
+      <div class="card-title">실제 예시 중심<br>통합 정리본</div>
+      <div class="card-desc">
+        STAR 기법을 제거하고 직무 전문성·협업·서비스 이해 각 주안점에 실제 답변 예시를 추가한 통합 분석 버전입니다.
+      </div>
+      <div class="tag-list">
+        <span class="tag">실제 예시</span>
+        <span class="tag">직무 전문성</span>
+        <span class="tag">협업</span>
+        <span class="tag">서비스 이해</span>
+      </div>
+      <div class="card-btn">통합본 보기 →</div>
     </a>
 
   </div>

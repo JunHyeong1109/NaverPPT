@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>네이버 면접 주안점 — 통합본</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+    :root {
+      --green: #03C75A;
+      --green-dark: #02a34a;
+      --green-light: #e8faf0;
+      --green-mid: #b3f0ce;
+      --dark: #1a1a1a;
+      --gray: #555;
+      --gray-light: #f2f3f5;
+      --white: #ffffff;
+      --bar: 52px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      background: #0e0e0e;
+    }
+
+    /* ── 상단 고정 바 ── */
+    #topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--bar);
+      z-index: 100;
+      background: rgba(14,14,14,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-direction: column;
+    }
+    .progress-bar { height: 3px; background: rgba(255,255,255,0.08); flex-shrink: 0; }
+    .progress-fill { height: 100%; background: var(--green); transition: width .25s ease; width: 11.1%; }
+    .topbar-inner {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .topbar-logo { font-size: 12px; font-weight: 900; color: var(--green); letter-spacing: 1.5px; flex-shrink: 0; }
+    .toc-nav { display: flex; gap: 2px; flex-wrap: nowrap; overflow: hidden; }
+    .toc-btn {
+      background: none; border: none;
+      color: #555;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 11px; padding: 4px 9px; border-radius: 4px;
+      cursor: pointer; transition: all .15s; white-space: nowrap;
+    }
+    .toc-btn:hover, .toc-btn.active { background: rgba(3,199,90,0.15); color: var(--green); }
+    .slide-counter { margin-left: auto; flex-shrink: 0; font-size: 11px; color: #555; }
+
+    /* ── 스크롤 컨테이너 ── */
+    #main {
+      position: fixed;
+      top: var(--bar); left: 0; right: 0; bottom: 0;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    /* ── 각 섹션 = 정확히 한 화면 ── */
+    .section-card {
+      height: calc(100vh - var(--bar));
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .section-card + .section-card { border-top: 4px solid #0e0e0e; }
+
+    .card-accent { height: 5px; background: var(--green); flex-shrink: 0; }
+    .card-body {
+      flex: 1;
+      padding: 32px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+    }
+
+    /* ── 레이블 & 제목 ── */
+    .section-label {
+      font-size: 12px; font-weight: 700; color: var(--green);
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 36px; font-weight: 900; color: var(--dark);
+      line-height: 1.2; margin-bottom: 20px;
+    }
+    .section-title span { color: var(--green); }
+
+    /* ── 타이틀 슬라이드 ── */
+    #s1 .card-body { padding: 52px 72px; }
+    .naver-badge {
+      display: inline-block;
+      background: rgba(3,199,90,0.12);
+      border: 1px solid rgba(3,199,90,0.3);
+      color: var(--green); font-size: 12px; font-weight: 900;
+      letter-spacing: 2px; padding: 5px 16px; border-radius: 5px; margin-bottom: 28px;
+    }
+    .title-main { font-size: 48px; font-weight: 900; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+    .title-sub  { font-size: 16px; color: #888; font-weight: 300; margin-bottom: 32px; }
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      background: rgba(3,199,90,0.18); color: var(--green);
+      padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      border: 1px solid rgba(3,199,90,0.35);
+    }
+
+    /* ── 프로세스 ── */
+    .process-row { display: flex; align-items: stretch; }
+    .step {
+      flex: 1; background: var(--gray-light); border-radius: 10px;
+      padding: 18px 10px; text-align: center;
+    }
+    .step-icon { font-size: 28px; margin-bottom: 8px; }
+    .step-title { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .step-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+    .step.hl { background: var(--green); }
+    .step.hl .step-title, .step.hl .step-desc { color: var(--white); }
+    .proc-arrow { display: flex; align-items: center; font-size: 16px; color: var(--green); padding: 0 5px; flex-shrink: 0; }
+
+    /* ── 하이라이트 박스 ── */
+    .hl-box {
+      background: var(--green-light); border: 1.5px solid var(--green-mid);
+      border-radius: 10px; padding: 14px 22px; text-align: center; margin-top: 16px;
+      font-size: 15px; color: var(--green-dark); font-weight: 500; line-height: 1.7;
+    }
+    .hl-box strong { color: var(--green); font-weight: 700; }
+
+    /* ── 그리드 ── */
+    .grid { display: grid; gap: 12px; }
+    .grid.g2 { grid-template-columns: 1fr 1fr; }
+    .grid.g3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    /* ── 정보 카드 ── */
+    .info-card {
+      background: var(--gray-light); border-radius: 10px;
+      padding: 18px 20px; border-left: 4px solid var(--green);
+    }
+    .ic-num   { font-size: 26px; font-weight: 900; color: var(--green-mid); line-height: 1; margin-bottom: 4px; }
+    .ic-title { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .ic-desc  { font-size: 13.5px; color: var(--gray); line-height: 1.65; }
+
+    /* ── 2컬럼 ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .col-head {
+      font-size: 14px; font-weight: 700; color: var(--green-dark);
+      margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--green-mid);
+    }
+
+    /* ── 체크 리스트 ── */
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; color: var(--dark); line-height: 1.55; }
+    .check-list li .dot {
+      width: 22px; height: 22px; background: var(--green); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: #fff; font-size: 11px; font-weight: 700; margin-top: 2px;
+    }
+    .check-list li strong { color: var(--green-dark); }
+
+    /* ── Q박스 ── */
+    .q-box {
+      background: var(--gray-light); border-radius: 10px;
+      padding: 16px 20px; font-size: 14.5px; color: var(--dark);
+      line-height: 1.55; border-left: 3px solid var(--green);
+    }
+    .q-label { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 1px; margin-bottom: 5px; }
+
+    /* ── 실제 예시 박스 ── */
+    .example-box {
+      background: #f0fdf6;
+      border: 1.5px solid var(--green-mid);
+      border-left: 4px solid var(--green);
+      border-radius: 10px;
+      padding: 13px 20px;
+      margin-top: 14px;
+      font-size: 13.5px;
+      color: var(--dark);
+      line-height: 1.75;
+    }
+    .ex-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-dark);
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+    .example-box strong { color: var(--green-dark); font-weight: 700; }
+
+    /* ── 마무리 ── */
+    #s9 .card-body { align-items: center; justify-content: center; text-align: center; }
+    .end-title { font-size: 40px; font-weight: 900; color: var(--dark); margin-bottom: 12px; }
+    .end-sub   { font-size: 18px; color: #888; font-weight: 300; margin-bottom: 30px; }
+    .end-hl {
+      display: inline-block;
+      background: rgba(3,199,90,0.12); border: 1px solid rgba(3,199,90,0.35);
+      border-radius: 10px; padding: 24px 52px;
+      font-size: 17px; color: var(--green); font-weight: 500; line-height: 1.8;
+    }
+    .end-hl strong { font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<!-- 상단 고정 바 -->
+<div id="topbar">
+  <div class="progress-bar"><div class="progress-fill" id="pgbar"></div></div>
+  <div class="topbar-inner">
+    <div class="topbar-logo">NAVER</div>
+    <nav class="toc-nav">
+      <button class="toc-btn active" onclick="goto('s1')">인트로</button>
+      <button class="toc-btn" onclick="goto('s2')">프로세스</button>
+      <button class="toc-btn" onclick="goto('s3')">평가 요소</button>
+      <button class="toc-btn" onclick="goto('s4')">직무 전문성</button>
+      <button class="toc-btn" onclick="goto('s5')">협업</button>
+      <button class="toc-btn" onclick="goto('s6')">서비스 이해</button>
+      <button class="toc-btn" onclick="goto('s7')">자주 묻는 질문</button>
+      <button class="toc-btn" onclick="goto('s8')">체크리스트</button>
+      <button class="toc-btn" onclick="goto('s9')">마무리</button>
+    </nav>
+    <div class="slide-counter" id="counter">1 / 9</div>
+  </div>
+</div>
+
+<!-- 스크롤 스냅 컨테이너 -->
+<div id="main">
+
+  <!-- 1. 타이틀 -->
+  <div class="section-card" id="s1">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="naver-badge">NAVER</div>
+      <div class="title-main">네이버 면접<br>주안점 분석</div>
+      <div class="title-sub">채용 면접에서 네이버가 중점적으로 평가하는 요소</div>
+      <div class="tag-row">
+        <span class="tag">공통 직군</span>
+        <span class="tag">면접 역량</span>
+        <span class="tag">실제 예시</span>
+        <span class="tag">준비 전략</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 채용 프로세스 -->
+  <div class="section-card" id="s2">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="section-label">Overview</div>
+      <div class="section-title">네이버 채용 <span>프로세스</span></div>
+      <div class="process-row">
+        <div class="step"><div class="step-icon">📄</div><div class="step-title">서류 전형</div><div class="step-desc">이력서·포트폴리오<br>경험 중심 서술</div></div>
+        <div class="proc-arrow">→</div>
+        <div class="step"><div class="step-icon">💻</div><div class="step-title">코딩 테스트</div><div class="step-desc">개발 직군<br>알고리즘·문제 해결</div></div>
+        <div class="proc-arrow">→</div>
+        <div class="step hl"><div class="step-icon">🎯</div><div class="step-title">1차 면접</div><div class="step-desc">실무진 면접<br>직무 역량 중심</div></div>
+        <div class="proc-arrow">→</div>
+        <div class="step hl"><div class="step-icon">🏢</div><div class="step-title">2차 면접</div><div class="step-desc">임원·HR 면접<br>인성·문화 적합도</div></div>
+        <div class="proc-arrow">→</div>
+        <div class="step"><div class="step-icon">✅</div><div class="step-title">최종 합격</div><div class="step-desc">처우 협의<br>입사 확정</div></div>
+      </div>
+      <div class="hl-box">
+        면접은 <strong>1차(직무 역량)</strong>와 <strong>2차(인성·문화 적합도)</strong>로 구분되며,<br>
+        두 단계 모두 <strong>경험 기반의 구체적인 답변</strong>이 핵심입니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 핵심 평가 4요소 -->
+  <div class="section-card" id="s3">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="section-label">Core Evaluation</div>
+      <div class="section-title">핵심 <span>평가 요소</span> 4가지</div>
+      <div class="grid g2">
+        <div class="info-card"><div class="ic-num">01</div><div class="ic-title">직무 전문성</div><div class="ic-desc">해당 직무에서 요구되는 기술·지식 보유 여부. 실제 업무 적용 가능한 깊이 있는 역량을 평가합니다.</div></div>
+        <div class="info-card"><div class="ic-num">02</div><div class="ic-title">문제 해결 능력</div><div class="ic-desc">복잡한 문제를 분석하고 창의적·논리적으로 해결하는 사고 프로세스를 중점 평가합니다.</div></div>
+        <div class="info-card"><div class="ic-num">03</div><div class="ic-title">협업 & 커뮤니케이션</div><div class="ic-desc">팀 내 원활한 소통, 갈등 조율, 공동의 목표를 위한 협력 경험을 구체적으로 확인합니다.</div></div>
+        <div class="info-card"><div class="ic-num">04</div><div class="ic-title">네이버 서비스 이해 & 문화 적합도</div><div class="ic-desc">네이버 제품·서비스에 대한 관심과 이해, 사용자 중심적 사고방식을 확인합니다.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 직무 전문성 -->
+  <div class="section-card" id="s4">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="section-label">Point 01</div>
+      <div class="section-title">직무 <span>전문성</span></div>
+      <div class="two-col">
+        <div>
+          <div class="col-head">평가 방식</div>
+          <ul class="check-list">
+            <li><span class="dot">✓</span><div>포트폴리오·프로젝트 기반 <strong>심층 질문</strong></div></li>
+            <li><span class="dot">✓</span><div>기술 선택 이유, 트레이드오프 설명 요구</div></li>
+            <li><span class="dot">✓</span><div>가장 어려웠던 기술적 문제와 <strong>해결 과정</strong></div></li>
+            <li><span class="dot">✓</span><div>최신 기술 트렌드에 대한 의견·적용 사례</div></li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-head">준비 포인트</div>
+          <ul class="check-list">
+            <li><span class="dot">!</span><div>내가 한 프로젝트의 <strong>기술 스택 선택 이유</strong> 정리</div></li>
+            <li><span class="dot">!</span><div>문제 상황 → 원인 분석 → 해결 흐름으로 스토리라인 구성</div></li>
+            <li><span class="dot">!</span><div>결과를 <strong>수치/지표</strong>로 표현 (성능 개선 N%, 사용자 N명 등)</div></li>
+            <li><span class="dot">!</span><div>네이버 기술 블로그(d2.naver.com) 정기 구독 권장</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="example-box">
+        <div class="ex-label">💬 실제 답변 예시</div>
+        "상품 목록 페이지 첫 로딩이 3초 이상 걸린다는 QA 피드백을 받았습니다. Chrome DevTools와 React Profiler로 분석한 결과 부모 리렌더마다 하위 컴포넌트가 불필요하게 재실행되는 문제였고, <strong>React.memo + useMemo 적용으로 렌더링 횟수를 67% 줄여 LCP를 2.8초 → 0.9초</strong>로 개선했습니다."
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 협업 & 커뮤니케이션 -->
+  <div class="section-card" id="s5">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="section-label">Point 02</div>
+      <div class="section-title">협업 &amp; <span>커뮤니케이션</span></div>
+      <div class="grid g3" style="margin-bottom: 14px;">
+        <div class="info-card"><div class="ic-title">갈등 조율 경험</div><div class="ic-desc">팀 내 의견 충돌 상황에서 어떻게 중재하고 합의를 이끌었는지 묻습니다.</div></div>
+        <div class="info-card"><div class="ic-title">다양한 직군과의 협업</div><div class="ic-desc">개발·기획·디자인 등 다른 직군과 협업한 경험과 소통 방식을 확인합니다.</div></div>
+        <div class="info-card"><div class="ic-title">실패 경험과 교훈</div><div class="ic-desc">실패를 솔직하게 인정하고, 거기서 무엇을 배워 어떻게 적용했는지 봅니다.</div></div>
+      </div>
+      <div class="grid g2" style="margin-bottom: 0;">
+        <div class="q-box"><div class="q-label">예상 질문 A</div>팀 프로젝트에서 갈등이 발생했을 때, 어떻게 해결했나요?</div>
+        <div class="q-box"><div class="q-label">예상 질문 B</div>본인의 의견이 채택되지 않았을 때 어떻게 행동하셨나요?</div>
+      </div>
+      <div class="example-box">
+        <div class="ex-label">💬 실제 답변 예시</div>
+        "기획자가 요구한 무한 스크롤을 두고 백엔드 팀장과 서버 부하 문제로 의견이 충돌했습니다. 양쪽 주장을 비교표로 정리해 전체 팀 리뷰 세션을 열었고, <strong>커서 기반 페이지네이션 + 클라이언트 캐싱</strong>을 절충안으로 합의해 출시 일정을 그대로 지켰습니다."
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 네이버 서비스 이해 -->
+  <div class="section-card" id="s6">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="section-label">Point 03</div>
+      <div class="section-title">네이버 <span>서비스 이해</span> &amp; 문화 적합도</div>
+      <div class="two-col">
+        <div>
+          <div class="col-head">서비스 이해 평가 포인트</div>
+          <ul class="check-list">
+            <li><span class="dot">N</span><div>지원하는 서비스·사업 부문 <strong>실제 사용 경험</strong></div></li>
+            <li><span class="dot">N</span><div>경쟁사 대비 네이버만의 <strong>차별점</strong> 이해</div></li>
+            <li><span class="dot">N</span><div>해당 서비스 개선 아이디어 제안 능력</div></li>
+            <li><span class="dot">N</span><div>사용자 데이터·피드백 기반 의사결정 사고</div></li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-head">네이버 핵심 문화 키워드</div>
+          <ul class="check-list">
+            <li><span class="dot">★</span><div><strong>기술 중심 사고</strong> — 문제를 기술로 해결</div></li>
+            <li><span class="dot">★</span><div><strong>사용자 중심</strong> — UX, 편의성 최우선</div></li>
+            <li><span class="dot">★</span><div><strong>데이터 기반</strong> — 직관보다 근거</div></li>
+            <li><span class="dot">★</span><div><strong>오너십</strong> — 주도적 책임감과 실행력</div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="example-box">
+        <div class="ex-label">💬 실제 답변 예시</div>
+        "네이버 스마트스토어를 6개월간 셀러로 운영하면서 리뷰 분석 기능이 키워드 빈도 나열에 그치는 점을 불편하게 느꼈습니다. 쿠팡 파트너스와 비교 분석 후 <strong>감성 분석 기반 리뷰 요약 카드</strong> 형태를 개선 아이디어로 제안드리고 싶습니다. 셀러가 상품 개선 포인트를 한눈에 파악할 수 있어 재구매율 향상으로 이어질 것이라 생각합니다."
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. 자주 나오는 질문 -->
+  <div class="section-card" id="s7">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="section-label">FAQ</div>
+      <div class="section-title">자주 나오는 <span>면접 질문</span> 유형</div>
+      <div class="grid g2">
+        <div class="q-box"><div class="q-label">지원 동기</div>왜 네이버에 지원했나요? 왜 이 팀·서비스인가요?</div>
+        <div class="q-box"><div class="q-label">자기소개</div>1~3분 안에 본인의 강점을 직무와 연결해서 소개해 주세요.</div>
+        <div class="q-box"><div class="q-label">강점 & 약점</div>본인의 강점이 실제 업무에서 어떻게 발휘됐나요? 약점은 어떻게 개선하고 있나요?</div>
+        <div class="q-box"><div class="q-label">가장 도전적인 경험</div>가장 어려웠던 프로젝트는 무엇이고 어떻게 극복했나요?</div>
+        <div class="q-box"><div class="q-label">서비스 개선 제안</div>네이버 XX 서비스에서 개선하고 싶은 점이 있다면 무엇인가요?</div>
+        <div class="q-box"><div class="q-label">5년 후 목표</div>5년 후 어떤 사람이 되고 싶나요? 네이버에서 어떤 기여를 하고 싶나요?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. 준비 체크리스트 -->
+  <div class="section-card" id="s8">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="section-label">Checklist</div>
+      <div class="section-title">면접 <span>준비 체크리스트</span></div>
+      <div class="two-col">
+        <div>
+          <div class="col-head">사전 준비</div>
+          <ul class="check-list">
+            <li><span class="dot">□</span><div>대표 경험 <strong>3~5가지</strong> — 구체적 수치 포함 스토리 작성</div></li>
+            <li><span class="dot">□</span><div>지원 직무 JD(Job Description) 분석 및 키워드 매핑</div></li>
+            <li><span class="dot">□</span><div>네이버 최근 뉴스·공식 블로그(d2, design) 스터디</div></li>
+            <li><span class="dot">□</span><div>예상 질문 10개 이상 소리 내어 연습</div></li>
+          </ul>
+        </div>
+        <div>
+          <div class="col-head">당일 & 면접 중</div>
+          <ul class="check-list">
+            <li><span class="dot">□</span><div>모르는 질문 → <strong>"잠깐 생각할 시간을 주실 수 있을까요?"</strong></div></li>
+            <li><span class="dot">□</span><div>답변은 <strong>결론 → 근거 → 사례</strong> 순서로</div></li>
+            <li><span class="dot">□</span><div>면접관 질문 끝까지 듣고, 핵심만 간결하게 답변</div></li>
+            <li><span class="dot">□</span><div>역질문 준비: 팀 문화, 온보딩, 기술 스택 방향성 등</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 마무리 -->
+  <div class="section-card" id="s9">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="end-title">핵심 한 줄 요약</div>
+      <div class="end-sub">네이버 면접은 <strong style="color:var(--green)">경험의 깊이</strong>를 봅니다</div>
+      <div class="end-hl">
+        구체적인 경험 + 수치로 증명된 결과<br>
+        그리고 <strong>"왜 네이버인가"</strong>에 대한 진심 어린 답변
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#main -->
+
+<script>
+  const sections = ['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+  const btns     = document.querySelectorAll('.toc-btn');
+  const main     = document.getElementById('main');
+
+  function goto(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  main.addEventListener('scroll', () => {
+    const sectionH = main.clientHeight;
+    const cur = Math.round(main.scrollTop / sectionH);
+    const idx = Math.min(cur, sections.length - 1);
+
+    document.getElementById('pgbar').style.width = ((idx + 1) / sections.length * 100) + '%';
+    document.getElementById('counter').textContent = (idx + 1) + ' / ' + sections.length;
+    btns.forEach((b, i) => b.classList.toggle('active', i === idx));
+  });
+
+  document.addEventListener('keydown', e => {
+    const sectionH = main.clientHeight;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      main.scrollBy({ top: sectionH, behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      main.scrollBy({ top: -sectionH, behavior: 'smooth' });
+    }
+  });
+</script>
+</body>
+</html>
