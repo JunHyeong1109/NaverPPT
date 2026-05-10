@@ -145,20 +145,34 @@
     .point-card .pt-desc  { font-size: 13px; color: var(--gray); line-height: 1.65; }
 
     .qa-block {
-      background: var(--gray-light); border-radius: 12px;
-      overflow: hidden; display: flex; flex-direction: column;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid #ddeee6;
+      box-shadow: 0 1px 4px rgba(3,199,90,0.07);
     }
     .qa-q {
-      background: #1e3a2e; padding: 14px 20px;
-      font-size: 14px; font-weight: 600; color: #e8f5ee; line-height: 1.5;
-      display: flex; align-items: flex-start; gap: 10px;
+      background: #f0fdf6;
+      padding: 14px 18px;
+      width: 210px;
+      min-width: 210px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 7px;
+      border-right: 1px solid #c8ead8;
+      font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.4;
     }
     .qa-q .q-badge {
-      background: var(--green); color: #fff; font-size: 11px; font-weight: 700;
-      padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 1px;
+      background: var(--green); color: #fff; font-size: 10px; font-weight: 700;
+      padding: 2px 10px; border-radius: 20px; width: fit-content;
     }
     .qa-a {
-      padding: 12px 20px; font-size: 13px; color: var(--gray); line-height: 1.65;
+      padding: 14px 22px; font-size: 13px; color: var(--gray);
+      line-height: 1.65; display: flex; flex-direction: column; justify-content: center;
     }
     .qa-a .focus-label { font-size: 10.5px; font-weight: 700; color: var(--green); letter-spacing: 1px; margin-bottom: 4px; }
 
